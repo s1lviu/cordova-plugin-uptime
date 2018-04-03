@@ -1,4 +1,4 @@
-package cordova-plugin-uptime;
+package com.silviu-s.uptime;
 
 import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
