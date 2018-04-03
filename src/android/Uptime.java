@@ -8,7 +8,7 @@ import android.os.SystemClock;
 
 import org.apache.cordova.CordovaPlugin;
 
-public class BootTime extends CordovaPlugin {
+public class Uptime extends CordovaPlugin {
 
     CallbackContext mCallbackContext;
 
