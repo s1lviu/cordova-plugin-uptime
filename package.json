@@ -1,0 +1,30 @@
+{
+  "name": "cordova-plugin-uptime",
+  "version": "0.0.1",
+  "description": "This plugin return the time spent in milliseconds since boot (without sleep time).",
+  "cordova": {
+    "id": "cordova-plugin-uptime",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s1lviu/cordova-plugin-uptime.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "ionic android uptime",
+    "android uptime",
+    "system real uptime",
+    "cordova uptime",
+    "device uptime"
+  ],
+  "author": "Silviu Stroe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s1lviu/cordova-plugin-uptime/issues"
+  },
+  "homepage": "https://github.com/s1lviu/cordova-plugin-uptime#readme"
+}
