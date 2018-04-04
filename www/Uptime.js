@@ -1,5 +1,15 @@
 var exec = require('cordova/exec');
 
-exports.getSystemUptime = function (arg0, success, error) {
-  exec(success, error, 'Uptime', 'getSystemUptime', []);
+
+var Uptime = {
+
+
+
+  getUptime: function (success, failure) {
+    exec(success, failure, "Uptime", "getUptime", []);
+  }
+
 };
+
+
+module.exports = Uptime;
