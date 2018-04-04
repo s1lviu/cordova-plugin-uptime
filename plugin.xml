@@ -8,10 +8,10 @@
   <platform name="android">
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="Uptime">
-        <param name="android-package" value="com.silvius.cordova.Uptime"/>
+        <param name="android-package" value="com.silvius.cordova.uptime.Uptime"/>
       </feature>
     </config-file>
     <config-file parent="/*" target="AndroidManifest.xml"></config-file>
-    <source-file src="src/android/Uptime.java" target-dir="src/cordova-plugin-uptime/Uptime"/>
+    <source-file src="src/android/Uptime.java" target-dir="src/com/silvius/cordova/Uptime"/>
   </platform>
 </plugin>
