@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-uptime",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "This plugin return the time spent in milliseconds since boot (without sleep time).",
   "cordova": {
     "id": "cordova-plugin-uptime",
