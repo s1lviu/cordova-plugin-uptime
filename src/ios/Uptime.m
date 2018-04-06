@@ -20,19 +20,32 @@
  *   OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  *   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+/********* Uptime.m Cordova Plugin Implementation *******/
 
-var exec = require('cordova/exec');
+#import "Uptime.h"
+#import <Cordova/CDVPlugin.h>
+#include <sys/sysctl.h>
+
+@implementation Uptime
+
+- (void)getUptime:(CDVInvokedUrlCommand*)command
+{
+    CDVPluginResult* pluginResult = nil;
+    
+    
+    struct timespec tp;
+    long long uptime;
+
+    if (clock_gettime(CLOCK_UPTIME_RAW, &tp) == 0) {
+          uptime = (int64_t)tp.tv_sec * 1000;
+    }
 
 
-var Uptime = {
+    NSString* uptime_string = [NSString stringWithFormat:@"%lld", uptime];
+    
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:uptime_string];
 
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
 
-
-  getUptime: function (success, failure) {
-    exec(success, failure, "Uptime", "getUptime", []);
-  }
-
-};
-
-
-module.exports = Uptime;
+@end

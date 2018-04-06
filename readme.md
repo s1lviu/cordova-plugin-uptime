@@ -11,6 +11,7 @@ Plugin provides the elapsed time since system boot up aka uptime.
 ## Supported Platforms
 
   - Android
+  - iOS
 
 ## Usage
 
@@ -23,8 +24,8 @@ Plugin provides the elapsed time since system boot up aka uptime.
      ...  
       
      this.uptime.getUptime()  
-       .then((uptime: any) => console.log(uptime))  
-       .catch((error: any) => console.log(error));  
+       .then((uptime: string) => console.log(uptime))  
+       .catch((error) => console.log(error));  
 **ES5 based platforms:**
 
     Uptime.getUptime(

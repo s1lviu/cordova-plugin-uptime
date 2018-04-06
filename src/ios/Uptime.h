@@ -20,19 +20,12 @@
  *   OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  *   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+/********* Uptime.h Cordova Plugin Header *******/
 
-var exec = require('cordova/exec');
+#import <Cordova/CDVPlugin.h>
 
+@interface Uptime : CDVPlugin
 
-var Uptime = {
+- (void)getUptime:(CDVInvokedUrlCommand*)command;
 
-
-
-  getUptime: function (success, failure) {
-    exec(success, failure, "Uptime", "getUptime", []);
-  }
-
-};
-
-
-module.exports = Uptime;
+@end
