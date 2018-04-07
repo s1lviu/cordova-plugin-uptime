@@ -2,7 +2,7 @@
 
 # cordova-plugin-uptime
 
-Plugin provides the elapsed time since system boot up aka uptime.
+Plugin provides the elapsed time in milliseconds since system boot up aka uptime.
 
 ## Installation
 
@@ -27,7 +27,7 @@ Plugin provides the elapsed time since system boot up aka uptime.
      this.uptime.getUptime()  
        .then((uptime: string) => console.log(uptime))  
        .catch((error) => console.log(error));  
-**ES5 based platforms:**
+**ES5 usage:**
 
     Uptime.getUptime(
         function(uptime) { 
