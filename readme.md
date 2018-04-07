@@ -6,7 +6,8 @@ Plugin provides the elapsed time since system boot up aka uptime.
 
 ## Installation
 
-    cordova plugin add cordova-plugin-uptime
+    $ ionic cordova plugin add cordova-plugin-uptime
+    $ npm install --save @ionic-native/uptime
 
 ## Supported Platforms
 
