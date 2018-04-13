@@ -36,9 +36,13 @@ public class Uptime extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("getUptime")) {
+        	boolean includeDeepSleep = args.getBoolean(0);
+        	if(includeDeepSleep)
+        	callbackContext.success(Long.toString(SystemClock.elapsedRealtime()));
+        else
             callbackContext.success(Long.toString(SystemClock.uptimeMillis()));
         } else {
-            callbackContext.error("Invalid action");
+            callbackContext.error("Cannot get system uptime");
             return false;
         }
         return true;
