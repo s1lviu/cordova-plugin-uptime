@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="Cordova Plugin src" pattern="file[cordova-plugin-uptime]:src//*" />
-</component>
