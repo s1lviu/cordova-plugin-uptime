@@ -22,17 +22,10 @@
  */
 
 var exec = require('cordova/exec');
-
-
 var Uptime = {
-
-
-
-  getUptime: function (success, failure) {
-    exec(success, failure, "Uptime", "getUptime", []);
-  }
-
+    getUptime: function (includeDeepSleep, success, failure) {
+        includeDeepSleep = includeDeepSleep || false;
+        exec(success, failure, "Uptime", "getUptime", [includeDeepSleep]);
+    }
 };
-
-
 module.exports = Uptime;
