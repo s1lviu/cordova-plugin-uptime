@@ -11,11 +11,6 @@ $ ionic cordova plugin add cordova-plugin-uptime
 $ npm install --save @ionic-native/uptime
 ```
 
-I saw that @ionic-native [have problems](https://github.com/ionic-team/ionic-native/issues/2514) with syncing packages with their Changelog. Then, I decided to host my own and actualised package:
-
-    $ npm install --save @devrevolution/uptime
-    #instead
-    $ npm install --save @ionic-native/uptime
 ## Supported Platforms
 
 -   Android
