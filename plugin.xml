@@ -2,6 +2,10 @@
 <plugin id="cordova-plugin-uptime" version="0.1.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Uptime</name>
+    <description>
+        A Cordova plugin to get the system uptime for Android and iOS platforms.
+    </description>
+    <license>MIT</license>
     <js-module name="Uptime" src="www/uptime.js">
         <clobbers target="Uptime"/>
     </js-module>
