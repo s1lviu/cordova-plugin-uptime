@@ -27,7 +27,7 @@
     "monotonic uptime"
   ],
   "author": "Silviu Stroe",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/s1lviu/cordova-plugin-uptime/issues"
   },
