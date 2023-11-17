@@ -22,10 +22,27 @@
  */
 
 var exec = require('cordova/exec');
+
 var Uptime = {
-    getUptime: function (includeDeepSleep, success, failure) {
-        includeDeepSleep = includeDeepSleep || false;
+    /**
+     * Gets the system uptime.
+     * @param {boolean} includeDeepSleep - Whether to include time spent in deep sleep.
+     * @param {function} success - Success callback, receives uptime as a string.
+     * @param {function} failure - Failure callback, receives error message.
+     */
+    getUptime: function (includeDeepSleep = false, success, failure) {
+        if (typeof success !== 'function') {
+            console.error('Success callback is not a function');
+            return;
+        }
+
+        if (typeof failure !== 'function') {
+            console.error('Failure callback is not a function');
+            return;
+        }
+
         exec(success, failure, "Uptime", "getUptime", [includeDeepSleep]);
     }
 };
+
 module.exports = Uptime;
