@@ -28,31 +28,28 @@
 
 @implementation Uptime
 
-- (void)getUptime:(CDVInvokedUrlCommand*)command
-{
+- (void)getUptime:(CDVInvokedUrlCommand*)command {
     CDVPluginResult* pluginResult = nil;
-    
-    
-    struct timespec tp;
-    long long uptime;
 
-    bool includeDeepSleep = [[command.arguments objectAtIndex:0] boolValue];
-
-     if(includeDeepSleep)
-     {
-        if (clock_gettime(CLOCK_MONOTONIC, &tp) == 0) {
-                  uptime = (int64_t)tp.tv_sec * 1000;
-            }
-     }else{
-
-        if (clock_gettime(CLOCK_UPTIME_RAW, &tp) == 0) {
-                  uptime = (int64_t)tp.tv_sec * 1000;
-            }
+    // Validate the argument
+    if (command.arguments.count < 1) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Argument missing"];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        return;
     }
 
-    NSString* uptime_string = [NSString stringWithFormat:@"%lld", uptime];
-    
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:uptime_string];
+    struct timespec tp;
+    long long uptime = 0;
+    bool includeDeepSleep = [command.arguments[0] boolValue];
+
+    clockid_t clockType = includeDeepSleep ? CLOCK_MONOTONIC : CLOCK_UPTIME_RAW;
+    if (clock_gettime(clockType, &tp) != 0) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Failed to get uptime"];
+    } else {
+        uptime = (int64_t)tp.tv_sec * 1000;
+        NSString* uptimeString = [NSString stringWithFormat:@"%lld", uptime];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:uptimeString];
+    }
 
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
