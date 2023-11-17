@@ -21,30 +21,41 @@
  *   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 package com.silvius.cordova.uptime;
+
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import android.os.SystemClock;
-
-import org.apache.cordova.CordovaPlugin;
 
 public class Uptime extends CordovaPlugin {
 
-    CallbackContext mCallbackContext;
+    private static final String ACTION_GET_UPTIME = "getUptime";
 
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("getUptime")) {
-        	boolean includeDeepSleep = args.getBoolean(0);
-        	if(includeDeepSleep)
-        	callbackContext.success(Long.toString(SystemClock.elapsedRealtime()));
-        else
-            callbackContext.success(Long.toString(SystemClock.uptimeMillis()));
-        } else {
-            callbackContext.error("Cannot get system uptime");
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
+        try {
+            if (ACTION_GET_UPTIME.equals(action)) {
+                return getUptime(args, callbackContext);
+            } else {
+                callbackContext.error("Invalid action: " + action);
+                return false;
+            }
+        } catch (JSONException e) {
+            callbackContext.error("JSON error: " + e.getMessage());
             return false;
         }
+    }
+
+    private boolean getUptime(JSONArray args, CallbackContext callbackContext) throws JSONException {
+        if (args.length() == 0) {
+            callbackContext.error("Missing argument for includeDeepSleep");
+            return false;
+        }
+
+        boolean includeDeepSleep = args.getBoolean(0);
+        long uptime = includeDeepSleep ? SystemClock.elapsedRealtime() : SystemClock.uptimeMillis();
+        callbackContext.success(Long.toString(uptime));
         return true;
     }
 }
